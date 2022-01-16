@@ -4,14 +4,22 @@ miss = document.getElementById("lost");
 deadCount = dead.textContent;
 missCount = miss.textContent;
 
+reloadPage = (deadCount, missCount) => {
+  dead.textContent = 0;
+  miss.textContent = 0;
+  deadCount = 0;
+  missCount = 0;
+  location.reload(true);
+}
+
 winLost = (deadCount, missCount) => {
   if(deadCount === 10) {
     alert("Вы выйграли!");
-    location.reload;
+    reloadPage(deadCount, missCount);
   }
   if(missCount === 5) {
     alert("Вы проиграли!");
-    location.reload;
+    reloadPage(deadCount, missCount);
   }
 }
 
