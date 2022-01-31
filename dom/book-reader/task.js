@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         document.querySelector(".font-size_active").classList.remove("font-size_active");
         e.target.classList.add("font-size_active");
         fontSize = e.target.dataset.size;
+        book.className = "book";
         switch (fontSize) {
           case "small":
             book.classList.add("book_fs-small");
@@ -16,8 +17,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
           case "big":
             book.classList.add("book_fs-big");
             break;
-          default: 
-            book.className = "book";
         }
       }
     });
