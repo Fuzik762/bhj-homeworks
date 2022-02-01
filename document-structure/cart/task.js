@@ -17,17 +17,13 @@ products.forEach((element) => {
     }
     if (e.target.classList.contains("product__add")) {
       srcImage = element.querySelector(".product__image").getAttribute("src");
-      productsId = cart.querySelectorAll(".cart__product");
-      hasId = false;
-      if (productsId.length !== 0) {
-        productsId.forEach((el) => {
-          if (el.dataset.id === element.dataset.id) {
-            el.querySelector(".cart__product-count").textContent = value;
-            hasId = true;
-          }
-        });
-      }
-      if (!hasId){
+      productsId = Array.from(cart.querySelectorAll(".cart__product"));
+      hasId = productsId.find(el => el.dataset.id === element.dataset.id)
+
+      if (hasId){
+        cartValue = hasId.querySelector('.cart__product-count');
+        cartValue.textContent = Number(cartValue.textContent) + value;
+      } else {
         setCartId = element.dataset.id;
         cart.innerHTML += `
       <div class="cart__product" data-id="${setCartId}">
